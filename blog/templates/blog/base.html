@@ -9,10 +9,15 @@
          <a href="https://en.wikipedia.org/wiki/Django" class="external_link" id="link_to_wiki_page">
     </head>
     <body>
-        <div>
-            <h1><a href="">Django Girls Blog</a></h1>
-        </div>
+    <div class="page-header">
+         
+                
+        
 
+            <a href="{% url 'blog.views.post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            <h1><a href="">Django Girls Blog</a></h1>
+        
+        </div>
         <div class="content container">
 
                 <div class="row">
