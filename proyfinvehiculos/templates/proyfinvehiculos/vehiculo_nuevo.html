@@ -1,0 +1,12 @@
+{% extends 'proyfinvehiculos/base.html' %}
+
+    {% block content %}
+        <h1>Vehiculo Nuevo</h1>
+        <a class="btn btn-default" href="{% url 'marca_nueva'%}"><span class="glyphicon glyphicon-th"></span></a>
+        <a class="btn btn-default" href="{% url 'modelo_nuevo'%}"><span class="glyphicon glyphicon-send"></span></a>
+        <form enctype="multipart/form-data" method="POST" class="post-form">
+          {% csrf_token %}
+          {{ formulario.as_p }}
+            <button type="submit" class="save btn btn-default">Guardar</button>
+        </form>
+    {% endblock %}

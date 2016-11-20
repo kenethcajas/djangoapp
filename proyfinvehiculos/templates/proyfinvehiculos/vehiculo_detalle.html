@@ -1,0 +1,16 @@
+{% extends 'proyfinvehiculos/base.html' %}
+
+{% block content %}
+        <div class="post">
+            {% if post.fecha_ingreso %}
+                <div class="date">
+                    {{ post.fecha_ingreso }}   
+            {% endif %}
+               <a class="btn btn-default" href="{% url 'vehiculo_editar' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+               <a class="btn btn-default" href="{% url 'vehiculo_eliminar' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+               </div>
+            <h1>{{ post.marca }}</h1>
+            <img src="http://127.0.0.1:8000/media/{{ post.imagen }}" alt="media/{{ post.imagen }}"/>
+            <p>{{ post.modelo|linebreaksbr }}</p>
+        </div>
+{% endblock %}

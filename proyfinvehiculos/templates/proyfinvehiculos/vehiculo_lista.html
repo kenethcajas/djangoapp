@@ -1,0 +1,11 @@
+{% extends 'proyfinvehiculos/base.html' %}
+{% block content %}
+	{% for veh in vehiculos %}
+	<div class="post">
+                <div class="date">
+                    {{veh.fecha_ingreso}}
+                </div>
+<h1><a href="{% url 'proyfinvehiculos.views.vehiculo_detalle' pk=veh.pk %}">{{ veh.marca }}</a></h1>
+                </div>
+    {% endfor %}
+{% endblock %}
