@@ -1,0 +1,8 @@
+{% extends 'proyfinvehiculos/base2.html' %}
+{% block content %}
+	{% for m in marca %}
+	<div class="post">                
+<h1><a href="{% url 'proyfinvehiculos.views.marca_detalle' pk=m.pk %}">{{ m.marca1 }}</a></h1>
+                </div>
+    {% endfor %}
+{% endblock %}

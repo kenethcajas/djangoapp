@@ -1,0 +1,7 @@
+{% extends 'proyfinvehiculos/base3.html' %}
+
+{% block content %}
+   <a class="btn btn-default" href="{% url 'modelo_editar' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+               <a class="btn btn-default" href="{% url 'modelo_eliminar' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+            <h1>{{ post.modelo1 }}</h1>
+{% endblock %}

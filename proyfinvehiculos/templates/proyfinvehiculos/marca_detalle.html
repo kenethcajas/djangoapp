@@ -1,0 +1,7 @@
+{% extends 'proyfinvehiculos/base2.html' %}
+
+{% block content %}
+   <a class="btn btn-default" href="{% url 'marca_editar' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+               <a class="btn btn-default" href="{% url 'marca_eliminar' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+            <h1>{{ post.marca1 }}</h1>
+{% endblock %}

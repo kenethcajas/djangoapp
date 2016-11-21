@@ -20,7 +20,7 @@ def vehiculo_nuevo(request):
                     fecha = timezone.now()
                     vehiculo = Vehiculo(fecha_ingreso=fecha,marca_id=marca_id,modelo_id=modelo_id,imagen=request.FILES)
                     formulario.save()
-                    return redirect('proyfinvehiculos.views.vehiculo_detalle',pk=vehiculo.pk)
+                    return redirect('proyfinvehiculos.views.vehiculo_lista')
                     messages.add_message(request, messages.SUCCESS, 'Vehiculo Guardado Exitosamente')
 
     else:
@@ -28,7 +28,7 @@ def vehiculo_nuevo(request):
     return render(request, 'proyfinvehiculos/vehiculo_nuevo.html', {'formulario': formulario})
 
 
-
+@login_required
 
 def vehiculo_lista(request):
     vehiculos = Vehiculo.objects.filter(fecha_ingreso=timezone.now()).order_by('fecha_ingreso')
@@ -70,10 +70,40 @@ def marca_nueva(request):
         if formulario.is_valid():
             marca = formulario.save(commit=False)
             marca.save()
-            return redirect('proyfinvehiculos.views.marca_detalle', pk=marca.pk)
+            return redirect('proyfinvehiculos.views.marca_lista')
     else:
         formulario = MarcaForm()
     return render(request, 'proyfinvehiculos/marca_nueva.html', {'formulario': formulario})
+
+def marca_lista(request):
+    marca = Marca.objects.all 
+    return render(request, 'proyfinvehiculos/marca_lista.html', {'marca':marca})
+
+def marca_detalle(request, pk):
+    post = get_object_or_404(Marca, pk=pk)
+    return render(request, 'proyfinvehiculos/marca_detalle.html', {'post':post})
+
+def marca_editar(request, pk):
+    marca = get_object_or_404(Marca, pk=pk)
+    if request.method == "POST":
+        formulario = MarcaForm(request.POST)
+        if formulario.is_valid():
+            marca = formulario.save(commit=False)
+            marca.save()
+            return redirect('proyfinvehiculos.views.marca_detalle', pk=marca.pk)
+    else:
+        formulario = MarcaForm()
+    return render(request, 'proyfinvehiculos/marca_editar.html', {'formulario': formulario})
+    
+    
+
+
+def marca_eliminar(request, pk):
+    post = get_object_or_404(Marca, pk=pk)
+    post.delete()
+    return redirect('proyfinvehiculos/marca_lista.html', pk=post.pk)
+
+
 
 
 
@@ -83,11 +113,37 @@ def modelo_nuevo(request):
         if formulario.is_valid():
             modelo = formulario.save(commit=False)
             modelo.save()
-            return redirect('proyfinvehiculos.views.modelo_detalle', pk=modelo.pk)
+            return redirect('proyfinvehiculos.views.modelo_lista')
     else:
         formulario = ModeloForm()
     return render(request, 'proyfinvehiculos/modelo_nuevo.html', {'formulario': formulario})
 
+def modelo_lista(request):
+    modelo = Modelo.objects.all 
+    return render(request, 'proyfinvehiculos/modelo_lista.html', {'modelo':modelo})
 
+def modelo_detalle(request, pk):
+    post = get_object_or_404(Modelo, pk=pk)
+    return render(request, 'proyfinvehiculos/modelo_detalle.html', {'post':post})
+
+def modelo_editar(request, pk):
+    modelo = get_object_or_404(Modelo, pk=pk)
+    if request.method == "POST":
+        formulario = ModeloForm(request.POST)
+        if formulario.is_valid():
+            modelo = formulario.save(commit=False)
+            modelo.save()
+            return redirect('proyfinvehiculos.views.modelo_detalle', pk=modelo.pk)
+    else:
+        formulario = ModeloForm()
+    return render(request, 'proyfinvehiculos/modelo_editar.html', {'formulario': formulario})
+    
+    
+
+
+def modelo_eliminar(request, pk):
+    post = get_object_or_404(Modelo, pk=pk)
+    post.delete()
+    return redirect('proyfinvehiculos/modelo_lista.html', pk=post.pk)
 
     

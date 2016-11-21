@@ -1,0 +1,8 @@
+{% extends 'proyfinvehiculos/base3.html' %}
+{% block content %}
+	{% for m in modelo %}
+	<div class="post">                
+<h1><a href="{% url 'proyfinvehiculos.views.modelo_detalle' pk=m.pk %}">{{ m.modelo1 }}</a></h1>
+                </div>
+    {% endfor %}
+{% endblock %}

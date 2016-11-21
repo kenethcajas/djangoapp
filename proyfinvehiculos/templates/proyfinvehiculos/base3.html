@@ -15,14 +15,12 @@
                 
         
 
-            <a href="{% url 'proyfinvehiculos.views.vehiculo_nuevo' %}" class="top-menu">Vehiculo<span class="glyphicon glyphicon-plus"></span></a>
-             <a href="{% url 'proyfinvehiculos.views.marca_lista' %}" class="top-menu">Marca<span class="glyphicon glyphicon-plus"></span></a>
-              <a href="{% url 'proyfinvehiculos.views.modelo_lista' %}" class="top-menu">Modelo<span class="glyphicon glyphicon-plus"></span></a>
+            <a href="{% url 'proyfinvehiculos.views.modelo_nuevo' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
             <a href="{% url 'logout' %}" class="top-menu"><span class="glyphicon glyphicon-log-out"></span></a>
             {%else%}
             <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
                  {% endif %}
-            <h1><a href="">VEHICULOS</a></h1>
+            <h1><a href="">MODELOS</a></h1>
         
         </div>
         <div class="content container">
