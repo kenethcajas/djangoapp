@@ -1,6 +1,8 @@
 from django.conf.urls import url
 from django.conf import settings
 from . import views
+from django.contrib.auth.views import login
+
 #para llamar a nuestra página para insertar tenemos que invocar la dirección /pelicula/nueva
 
 # se puede crear un hipervinculo para llamarla, en este ejemplo hay que invocar manualmente la dirección.
@@ -14,6 +16,7 @@ urlpatterns = [
         'document_root': settings.MEDIA_ROOT
     }),
 
+   
     url(r'^$', views.vehiculo_lista),
     #url(r'^$', views.inicio),
     url(r'^vehiculo/(?P<pk>[0-9]+)/$', views.vehiculo_detalle),

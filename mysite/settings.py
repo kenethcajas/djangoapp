@@ -106,3 +106,4 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static','media')
+LOGIN_REDIRECT_URL = '/'

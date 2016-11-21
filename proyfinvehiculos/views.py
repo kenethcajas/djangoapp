@@ -3,6 +3,10 @@ from django.contrib import messages
 from .forms import VehiculoForm, MarcaForm, ModeloForm
 from proyfinvehiculos.models import Vehiculo, Marca, Modelo
 from django.utils import timezone
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+
+
 
 
 
@@ -22,6 +26,9 @@ def vehiculo_nuevo(request):
     else:
         formulario = VehiculoForm()
     return render(request, 'proyfinvehiculos/vehiculo_nuevo.html', {'formulario': formulario})
+
+
+
 
 def vehiculo_lista(request):
     vehiculos = Vehiculo.objects.filter(fecha_ingreso=timezone.now()).order_by('fecha_ingreso')
